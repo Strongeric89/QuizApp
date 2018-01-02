@@ -3,6 +3,7 @@ package com.example.eric.quizapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public ArrayList<Question> questions = new ArrayList <Question> ();
+    public ArrayList<Question> questions = new ArrayList<Question>();
 
     private TextView question = null;
     private CheckBox quest1Box = null;
@@ -39,15 +40,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Question set is based on Computer Science Trivia
-        Question q1 = new Question("What port is used for HTTP protocol?","80","443","8080","81");
-        Question q2 = new Question("How many Layers are in the TCP/IP Model?","4","7","6","2");
-        Question q3 = new Question("What Language uses a JVM ?","java","C","C++","Python");
-        Question q4 = new Question("What Does MVC stand for?","Model View Controller","Make Verbose Contracts","My Vitrual C","Man View Controls");
+        Question q1 = new Question("What port is used for HTTP protocol?", "80", "443", "8080", "81");
+        Question q2 = new Question("How many Layers are in the TCP/IP Model?", "4", "7", "6", "2");
+        Question q3 = new Question("What Language uses a JVM ?", "java", "C", "C++", "Python");
+        Question q4 = new Question("What Does MVC stand for?", "Model View Controller", "Make Verbose Contracts", "My Vitrual C", "Man View Controls");
+        Question q5 = new Question("What Does MVC stand for?", "Model View Controller", "Make Verbose Contracts", "My Vitrual C", "Man View Controls");
 
         questions.add(q1);
         questions.add(q2);
         questions.add(q3);
         questions.add(q4);
+        questions.add(q5);
 
         image = (ImageView) findViewById(R.id.image);
 
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         quest4Box = (CheckBox) findViewById(R.id.question4Box);
         option4 = (TextView) findViewById(R.id.question4BoxD);
 
+
         //set all strings
         question.setText(questions.get(questionCounter).question);
         option1.setText(questions.get(questionCounter).answer);
@@ -74,20 +78,18 @@ public class MainActivity extends AppCompatActivity {
         setBg();
 
 
-
-
-
-
     }
 
-    public void submitAnswer(View view){
+    public void submitAnswer(View view) {
 
-        if(quest1Box.isChecked()){
-            score ++;
-            questionCounter ++;
+
+        if (quest1Box.isChecked()) {
+
+            score++;
+            questionCounter++;
 
             //toast
-            Toast.makeText(this, "thank you for your answer:" + questionCounter, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "thank you for your answer:" + score, Toast.LENGTH_SHORT).show();
 
             //set all strings
             question.setText(questions.get(questionCounter).question);
@@ -98,16 +100,16 @@ public class MainActivity extends AppCompatActivity {
 
             setBg();
 
-            quest1Box.toggle();
+            quest1Box.setChecked(false);
+            quest2Box.setChecked(false);
+            quest3Box.setChecked(false);
+            quest4Box.setChecked(false);
 
 
+        } else {
+            questionCounter++;
 
-        }else if(quest1Box.isChecked() && quest2Box.isChecked() || quest3Box.isChecked() || quest4Box.isChecked()){
-            questionCounter ++;
-
-            Toast.makeText(this, "thank you : " + questionCounter, Toast.LENGTH_SHORT).show();
-
-
+            Toast.makeText(this, "thank you : " + score, Toast.LENGTH_SHORT).show();
 
             //set all strings
             question.setText(questions.get(questionCounter).question);
@@ -116,28 +118,45 @@ public class MainActivity extends AppCompatActivity {
             option3.setText(questions.get(questionCounter).a3);
             option4.setText(questions.get(questionCounter).a4);
 
-        }
-        else{
-            Toast.makeText(this, "select an option", Toast.LENGTH_SHORT).show();
+            quest1Box.setChecked(false);
+            quest2Box.setChecked(false);
+            quest3Box.setChecked(false);
+            quest4Box.setChecked(false);
 
         }
-        
+
+        check();
+
+
     }
 
-    public void setBg(){
-        if(questionCounter == 0){
+    public void setBg() {
+        if (questionCounter == 0) {
             image.setImageResource(R.drawable.q1);
         }
-        if(questionCounter == 1){
+        if (questionCounter == 1) {
             image.setImageResource(R.drawable.q2);
         }
-        if(questionCounter == 2){
+        if (questionCounter == 2) {
             image.setImageResource(R.drawable.q3);
         }
-        if(questionCounter == 3){
+        if (questionCounter == 3) {
             image.setImageResource(R.drawable.q4);
         }
 
 
+    }
+
+    public void check() {
+        Log.d("eric", "score is " + score);
+        if (questionCounter > 3) {
+            //next round
+            Intent i = new Intent(this, Round2Activity.class);
+            i.putExtra("score", score);
+
+            startActivity(i);
+
+
+        }
     }
 }
