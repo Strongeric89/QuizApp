@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="4"
+    android:background="@color/colorAccent">
+
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="4"
+        android:background="@color/colorAccent"
+        android:src="@drawable/q1">
+
+    </ImageView>
+    <TextView
+        android:id="@+id/Question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:padding="10sp"
+        android:text="@string/question"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+
+        <CheckBox
+            android:id="@+id/question1Box"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark"
+            android:buttonTint="@color/white" />
+
+        <TextView
+            android:id="@+id/question1BoxD"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="fill"
+            android:text="@string/option1"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="3"
+    android:background="@color/colorAccent">
+
+        <CheckBox
+            android:id="@+id/question2Box"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark"
+            android:buttonTint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/question2BoxD"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="fill"
+            android:text="@string/option2"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:weightSum="3"
+        android:background="@color/colorAccent">
+
+        <CheckBox
+            android:id=  "@+id/question3Box"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark"
+            android:buttonTint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/question3BoxD"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="fill"
+            android:text="@string/option3"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:background="@color/colorAccent">
+
+        <CheckBox
+            android:id="@+id/question4Box"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark"
+            android:buttonTint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/question4BoxD"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="fill"
+            android:text="@string/option4"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/answerBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="submit answer"
+        android:onClick="submitAnswer"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary">
+
+    </Button>
+
+
+</LinearLayout>
